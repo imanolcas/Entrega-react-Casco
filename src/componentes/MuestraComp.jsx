@@ -1,12 +1,13 @@
 
-function Articulos(){
+
+function Articulos({ productos }){
     return(
         <aside>
-            <h1>
+            <h3>
                 Lista de productos
-            </h1>
+            </h3>
             <div className="productos">
-
+                {productos}
             </div>
         </aside>
     )

@@ -1,0 +1,12 @@
+{
+    "search":[
+        {
+            "id" : "1",
+            "prenda": "cargo"
+        },
+        {
+            "id" : "2",
+            "prenda": "remera"
+        }
+    ]
+}
