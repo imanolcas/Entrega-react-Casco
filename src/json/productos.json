@@ -2,11 +2,17 @@
     "search":[
         {
             "id" : "1",
-            "prenda": "cargo"
+            "title": "cargo",
+            "image": "",
+            "description":"",
+            "price":"100"
         },
         {
             "id" : "2",
-            "prenda": "remera"
+            "title": "remera",
+            "image": "",
+            "description":"",
+            "price":"100"
         }
     ]
 }
