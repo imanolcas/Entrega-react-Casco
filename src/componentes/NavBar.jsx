@@ -33,9 +33,7 @@ function Navbar(){
                         </Link>
                     </li>
                 </ul>
-                <Link to="/carrito">
                     <Carrito />
-                </Link>
             </nav>
         </>
     )

@@ -7,8 +7,21 @@
     grid-template-columns: repeat(5, 1fr);
 
     width: 100%;
+    justify-items: center;
+    align-items: center;
+    align-items: center;
     gap: 30px;
 
+}
+
+.main-productos > p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 40vh;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .li-producto{
@@ -22,7 +35,7 @@
     justify-content: center;
 
     background-color: #1a1a1a;
-    color: #f7e074;
+    color: #b2f5f5;
 
     border-radius: 20px;
 
@@ -32,14 +45,46 @@
 .botones{
     display: flex;
     flex-direction: row;  
+    gap: 5px;
 }
 
 .boton{
-    color: #f7e074;
+    color: #b2f5f5;
+    border: 2px solid #b2f5f5;
 }
+
 
 li > img{
     border-radius: 10px;
     width: 183px;
     height: 275px;
+}
+
+.detalle-producto{
+    margin: 20px;
+
+    height: 90vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #1a1a1a;
+    color: #b2f5f5;
+
+    border-radius: 20px;
+
+    gap: 100px;
+}
+
+.detalle-producto > .textos{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+
+.detalle-producto > img{
+    width: 30%;
+    height: 70%;
 }
