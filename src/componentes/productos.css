@@ -34,8 +34,8 @@
     align-items: center;
     justify-content: center;
 
-    background-color: #1a1a1a;
-    color: #b2f5f5;
+    background-color: var(--secundary-color);
+    color: var(--main-color);
 
     border-radius: 20px;
 
@@ -49,8 +49,8 @@
 }
 
 .boton{
-    color: #b2f5f5;
-    border: 2px solid #b2f5f5;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
 }
 
 
@@ -70,8 +70,8 @@ li > img{
     align-items: center;
     justify-content: center;
 
-    background-color: #1a1a1a;
-    color: #b2f5f5;
+    background-color: var(--secundary-color);
+    color: var(--main-color);
 
     border-radius: 20px;
 

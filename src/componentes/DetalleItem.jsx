@@ -17,7 +17,6 @@ export function DetalleItem(){
     useEffect(() => {
         const findProduct = productos.find(el => el.id === parseInt(id))
         setProductoSeleccionado(findProduct)
-        console.log(findProduct)
     })
 
     return(

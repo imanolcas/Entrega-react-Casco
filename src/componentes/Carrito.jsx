@@ -3,6 +3,7 @@ import { useAppContext } from "../context/AppContext"
 import "./carrito.css"
 import { Producto } from "./Producto"
 import Swal from 'sweetalert2'
+import { Toaster, toast } from "react-hot-toast"
 
 
 export function Carrito(){
@@ -19,6 +20,10 @@ export function Carrito(){
 
         setCarrito([])
     } 
+
+    const notiEliminar = () =>{
+        toast.error("Carrito eliminado con exito")
+    }
 
     return(
         <div className="div-carrito">
@@ -45,13 +50,14 @@ export function Carrito(){
                 }
                 {
                     carrito.length === 0 ? 
-                    <p className="carrito-notProds">No hay productos en el carrito</p> : 
-                    <div >
+                    <p className="carrito-notProds">No hay productos en el carrito</p>
+                    : 
+                    <div className="botones-carrito">
                         <button className="boton-del-carrito" onClick={() => handleClick()}>Comprar</button>
-                        <button className="boton-del-carrito" onClick={() => setCarrito([])}>Borrar carrito</button>
+                        <button className="boton-del-carrito" onClick={() => {setCarrito([]), notiEliminar()}}>Borrar carrito</button>
                     </div>
-                    
                 }
+                <Toaster position="top-left"/>
                 
             </aside>
         </div>        

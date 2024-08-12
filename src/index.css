@@ -1,13 +1,16 @@
+
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
+  --main-color: #48B9E7;
+  --secundary-color: #101820;
 }
 
 a {
   font-weight: 500;
-  color: #b2f5f5;
+  color: var(--main-color);
   text-decoration: none;
 }
 a:hover {
@@ -25,7 +28,7 @@ body {
   display: flex;
   width: 100%;
   min-height: 100vh;
-  background-color: #b2f5f5;
+  background-color: var(--main-color);
 }
 
 h1 {
@@ -39,7 +42,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--secundary-color);
   cursor: pointer;
 
 }

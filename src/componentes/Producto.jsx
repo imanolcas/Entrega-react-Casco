@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom"
 import { useAppContext } from "../context/AppContext.jsx"
+import { Toaster, toast } from "react-hot-toast"
 
-export function Producto( { id, image, title, description, price, detalle, onCarrito, cantidad, productoSeleccionado} ){
+export function Producto( { id, image, title, description, price, detalle, onCarrito, productoSeleccionado} ){
 
-    const { agregarProducto} = useAppContext()
+    const { agregarProducto, eliminarProducto} = useAppContext()
+
+    const notificacion = () =>{
+        toast.success(`${title} agregado con exito`)
+    }
 
     return(
         <li 
@@ -24,9 +29,18 @@ export function Producto( { id, image, title, description, price, detalle, onCar
                         </p>
                     </div>
                     <div className="botones">
-                        <button className="boton boton-mas" onClick={() => {agregarProducto(id)}}>
-                            Agregar
+                        <button className="boton boton-mas" onClick={() => {agregarProducto(id), notificacion()}}>
+                                Agregar                   
                         </button>
+                        {
+                                onCarrito ? 
+                                <button className="boton boton-mas" onClick={() => {eliminarProducto(id)}}>
+                                    eliminar                 
+                                </button> 
+                                : 
+                                " "
+                        }
+                        <Toaster position="top-left"/>
                         <button className="boton boton-ver" 
                             style={
                                 detalle ? {

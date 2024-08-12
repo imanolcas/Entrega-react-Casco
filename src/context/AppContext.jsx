@@ -68,15 +68,30 @@ export const ContextProvider = ( props ) =>{
         }
 
         setCarrito(carritoNuevo)
+        
+    }
+
+    function eliminarProducto (id) {
+
+        const carritoNuevo = [...carrito]
+        const indiceEnCarrito = carritoNuevo.findIndex(el => el.id === id)
+        
+        carritoNuevo[indiceEnCarrito].cantidad -= 1;
+
+        if(carritoNuevo[indiceEnCarrito].cantidad <= 0){
+            const listaSinProducto = carritoNuevo.filter(ele => ele.id !== id)
+            setCarrito(listaSinProducto)
+        }else{
+            setCarrito(carritoNuevo)
+        }
     }
 
 
 
 
     return(
-        <appContext.Provider value={{cargarData, agregarProducto, carrito, setCarrito, productos, filtros, setFiltros}}>
+        <appContext.Provider value={{cargarData, agregarProducto, eliminarProducto, carrito, setCarrito, productos, filtros, setFiltros}}>
             {props.children}
         </appContext.Provider>
     )
-
 }
