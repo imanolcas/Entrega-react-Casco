@@ -5,20 +5,20 @@ import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { toast } from "react-hot-toast"
 
 
-// const firebaseConfig = {
-//     apiKey: "AIzaSyCK0B8U2mX0Hl42KNLIKCwieBL_JTATiuA",
-//     authDomain: "react-flex-mauro.firebaseapp.com",
-//     projectId: "react-flex-mauro",
-//     storageBucket: "react-flex-mauro.appspot.com",
-//     messagingSenderId: "845875527962",
-//     appId: "1:845875527962:web:3ee21765f56be60b6e2ca3"
-// };
+const firebaseConfig = {
+    apiKey: "AIzaSyCK0B8U2mX0Hl42KNLIKCwieBL_JTATiuA",
+    authDomain: "react-flex-mauro.firebaseapp.com",
+    projectId: "react-flex-mauro",
+    storageBucket: "react-flex-mauro.appspot.com",
+    messagingSenderId: "845875527962",
+    appId: "1:845875527962:web:3ee21765f56be60b6e2ca3"
+};
 
-// const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-// const db = getFirestore(app);
+const db = getFirestore(app);
 
-// const productosCollection = collection(db, "items")
+const productosCollection = collection(db, "items")
 
 const appContext = createContext()
 
@@ -45,16 +45,16 @@ export const ContextProvider = ( props ) =>{
 
     const cargarData = () =>{
 
-        // getDocs(productosCollection).then(snapshot => {
-        //     let arrayProductos = snapshot.docs.map(el => el.data());
-        //     setProductos(arrayProductos)
-        // }).catch(err => console.error(err))
+        getDocs(productosCollection).then(snapshot => {
+            let arrayProductos = snapshot.docs.map(el => el.data());
+            setProductos(arrayProductos)
+        }).catch(err => console.error(err))
 
-        fetchData()
-            .then(response => {
-                setProductos(response)
-            })
-            .catch(err => console.error(err))
+        // fetchData()
+        //     .then(response => {
+        //         setProductos(response)
+        //     })
+        //     .catch(err => console.error(err))
 
     }
 
