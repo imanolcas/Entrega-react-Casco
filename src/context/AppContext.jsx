@@ -2,22 +2,23 @@ import { createContext, useContext, useState } from "react";
 import { fetchData } from "../json/productos";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { toast } from "react-hot-toast"
 
 
-const firebaseConfig = {
-    apiKey: "AIzaSyCK0B8U2mX0Hl42KNLIKCwieBL_JTATiuA",
-    authDomain: "react-flex-mauro.firebaseapp.com",
-    projectId: "react-flex-mauro",
-    storageBucket: "react-flex-mauro.appspot.com",
-    messagingSenderId: "845875527962",
-    appId: "1:845875527962:web:3ee21765f56be60b6e2ca3"
-};
+// const firebaseConfig = {
+//     apiKey: "AIzaSyCK0B8U2mX0Hl42KNLIKCwieBL_JTATiuA",
+//     authDomain: "react-flex-mauro.firebaseapp.com",
+//     projectId: "react-flex-mauro",
+//     storageBucket: "react-flex-mauro.appspot.com",
+//     messagingSenderId: "845875527962",
+//     appId: "1:845875527962:web:3ee21765f56be60b6e2ca3"
+// };
 
-const app = initializeApp(firebaseConfig);
+// const app = initializeApp(firebaseConfig);
 
-const db = getFirestore(app);
+// const db = getFirestore(app);
 
-const productosCollection = collection(db, "items")
+// const productosCollection = collection(db, "items")
 
 const appContext = createContext()
 
@@ -32,22 +33,28 @@ export const ContextProvider = ( props ) =>{
         categoria: "todas"
     })
   
-    
+    const notificacion = (title) =>{
+        toast.success(`${title} agregado con exito`)
+    }
+
+    const notiLimite = () =>{
+        toast.error(`No se pueden agregar mas de 10 porductos`)
+    }
     
 
 
     const cargarData = () =>{
 
-        getDocs(productosCollection).then(snapshot => {
-            let arrayProductos = snapshot.docs.map(el => el.data());
-            setProductos(arrayProductos)
-        }).catch(err => console.error(err))
+        // getDocs(productosCollection).then(snapshot => {
+        //     let arrayProductos = snapshot.docs.map(el => el.data());
+        //     setProductos(arrayProductos)
+        // }).catch(err => console.error(err))
 
-        // fetchData()
-        //     .then(response => {
-        //         setProductos(response)
-        //     })
-        //     .catch(err => console.error(err))
+        fetchData()
+            .then(response => {
+                setProductos(response)
+            })
+            .catch(err => console.error(err))
 
     }
 
@@ -62,8 +69,14 @@ export const ContextProvider = ( props ) =>{
         const indiceEnCarrito = carritoNuevo.findIndex(el => el.id === id)
         // const nuevoProductos = productos.find(el => el.id == e)
         if(indiceEnCarrito >= 0){
-            carritoNuevo[indiceEnCarrito].cantidad += 1;
-        }else{
+            if(carritoNuevo[indiceEnCarrito].cantidad <= 9){
+                carritoNuevo[indiceEnCarrito].cantidad += 1;
+                notificacion(carritoNuevo[indiceEnCarrito].title)
+            }else{
+                notiLimite()
+            }
+        }
+        else{
             carritoNuevo.push({ ...agregarElProducto, cantidad: 1 });
         }
 
